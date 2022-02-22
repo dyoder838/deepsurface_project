@@ -1,11 +1,15 @@
 import React from 'react';
-
+import NavBar from '../../components/NavBar';
 
 export default function MainPage() {
 
     return(
+        
         <div>
-            <p>MainPage</p>
+
+        <NavBar />
+
         </div>
+
     );
 };
