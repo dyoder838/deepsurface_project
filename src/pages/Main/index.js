@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../../components/NavBar';
 
 export default function MainPage() {
 
@@ -7,7 +6,7 @@ export default function MainPage() {
         
         <div>
 
-        <NavBar />
+       <p>main page</p>
 
         </div>
 
