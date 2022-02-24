@@ -1,41 +1,41 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
 
-export default function BasicCard() {
+
+export default function BasicCard(props) {
+  console.log("props:", props)
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
+      
         <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
+          {props.identifier}
         </Typography>
+
+        <Typography sx={{ fontSize: 14 }} color="text.secondary">
+          Id: {props.id}
+        </Typography>
+
+        <Typography sx={{ fontSize: 18 }} color="text.secondary">
+          Risk: {props.risk}
+        </Typography>
+
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
+          Modified: {new Date(props.modified).toDateString()}
         </Typography>
+
         <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          Description: {props.description}
         </Typography>
+
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" href={props.urls}>Learn More</Button>
       </CardActions>
     </Card>
   );
