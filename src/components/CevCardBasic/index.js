@@ -8,10 +8,9 @@ import Typography from '@mui/material/Typography';
 
 
 export default function BasicCard(props) {
+  const dateConverter = (props.modified * 1000)
+  const d = new Date(dateConverter);
 
-
-  const d = new Date(props.modified);
-    
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
