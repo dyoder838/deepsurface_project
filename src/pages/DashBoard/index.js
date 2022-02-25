@@ -3,13 +3,13 @@ import Grid from '@mui/material/Grid';
 import CevCardBasic from '../../components/CevCardBasic';
 import CevDb from '../../vulnerability-data.json'
 
-export default function DashBoard() {
-
+export default function DashBoard(props) {
+ 
     return (
 
         <Grid container>
 
-            {Object.entries(CevDb).map(([index, data]) =>
+            {Object.entries(props.stuff).map(([index, data]) =>
 
                 <Grid key={index} item xs={12} md={6} lg={6}>
 
