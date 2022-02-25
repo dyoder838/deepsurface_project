@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import CevCardBasic from '../../components/CevCardBasic';
-import CevDb from '../../vulnerability-data.json'
 
 export default function DashBoard(props) {
  

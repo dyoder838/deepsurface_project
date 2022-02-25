@@ -7,10 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import Db from '../../vulnerability-data.json';
-
-import CevCardBasic from '../../components/CevCardBasic'
-
 export default function MainPage() {
 
     // create an API call with useEffect to collect and pass data 

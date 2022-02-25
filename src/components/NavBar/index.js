@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {useState, setState} from 'react';
+
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -57,14 +58,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar(props) {
 
-    const [inputText, setInputText] = useState("");
-    let inputHandler = (e) => {
+    // const [inputText, setInputText] = useState("");
+    // let inputHandler = (e) => {
       
-      var lowerCase = e.target.value.toLowerCase();
-      setInputText(lowerCase);
-    };
+    //   var lowerCase = e.target.value.toLowerCase();
+    //   setInputText(lowerCase);
+    // };
 
-    console.log("navbar props:", props)
+    // console.log("navbar props:", props)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -128,7 +129,7 @@ export default function SearchAppBar(props) {
                         </SearchIconWrapper>
 
                         <StyledInputBase
-                            onChange={inputHandler}
+                            // onChange={inputHandler}
                             type="text"
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
