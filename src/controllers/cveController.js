@@ -23,11 +23,7 @@ const cveController = {
         
     },
     
-    identifierList(props) {
-
-        Object.values(props)
-
-    }   
+   
     
 
 

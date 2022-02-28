@@ -1,31 +1,33 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
+
+// components
 import CevCardBasic from '../../components/CevCardBasic';
 
+// MUI imports
+import Grid from '@mui/material/Grid';
+
 export default function DashBoard(props) {
- 
+    console.log("Analysis page props:",props.db)
+
+
     return (
 
         <Grid container>
 
-            {Object.entries(props.db).map(([index, data]) =>
-
-                <Grid key={index} item xs={12} md={6} lg={6}>
+                <Grid item xs={12} md={6} lg={6}>
 
                     <CevCardBasic
-                        key={index}
-                        id={data.id}
-                        hosts={data.hosts}
-                        patches={data.patches}
-                        risk={data.risk}
-                        identifier={data.identifier}
-                        modified={data.modified}
-                        description={data.description}
-                        urls={data.urls} />
+
+                        id={props.db.id}
+                        hosts={props.db.hosts}
+                        patches={props.db.patches}
+                        risk={props.db.risk}
+                        identifier={props.db.identifier}
+                        modified={props.db.modified}
+                        description={props.db.description}
+                        urls={props.db.urls} />
 
                 </Grid>
-
-            )};
 
         </Grid>
 
