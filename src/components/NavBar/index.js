@@ -1,5 +1,10 @@
 import * as React from 'react';
-import {useState, setState} from 'react';
+import { useState, setState, useEffect } from 'react';
+
+import { identifierList } from '../../controllers/cveController'
+
+import SearchBar from '../search/search'
+import { searchCve } from '../../controllers/cveController';
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -57,15 +62,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar(props) {
+   
+   
 
-    // const [inputText, setInputText] = useState("");
-    // let inputHandler = (e) => {
-      
-    //   var lowerCase = e.target.value.toLowerCase();
-    //   setInputText(lowerCase);
-    // };
+    const { searchBar } = window.location;
+    const query = new URLSearchParams(searchBar).get('s');
+    const [searchQuery, setSearchQuery] = useState(query || '');
+    const posts = searchCve(props.stuff, "id", query )
+    
+    const filterPosts = (posts, query) => {
+        if (!query) {
+            return posts;
+        }
+    
+        return posts.filter((post) => {
+            const postName = post.name.toLowerCase();
+            return postName.includes(query);
+        });
+    };
+    const filteredPosts = filterPosts(posts, searchQuery);
 
-    // console.log("navbar props:", props)
+    // console.log("navbar props:", posts)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -75,7 +92,7 @@ export default function SearchAppBar(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+   
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -122,22 +139,17 @@ export default function SearchAppBar(props) {
                         Easy CEV
                     </Typography>
 
-                    <Search>
+                   <SearchBar
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                   />
 
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-
-                        <StyledInputBase
-                            // onChange={inputHandler}
-                            type="text"
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            name="search"
-                            id="search"
-                        />
-
-                    </Search>
+                    <ul>
+                        {filteredPosts.map(post => (
+                            <li key={post.key}>{post.name}</li>
+                             ))}
+                    </ul>
+                   
 
                 </Toolbar>
 
@@ -146,3 +158,30 @@ export default function SearchAppBar(props) {
         </Box >
     );
 }
+
+{/* <Search 
+searchQuery={searchQuery}
+setSearchQuery={setSearchQuery}
+>
+
+<SearchIconWrapper>
+    <SearchIcon />
+</SearchIconWrapper>
+
+<StyledInputBase
+    
+    value={searchQuery}
+    onInput={e => setSearchQuery(e.target.value)}
+    type="text"
+    placeholder="Search…"
+    inputProps={{ 'aria-label': 'search' }}
+    name="search"
+    id="search"
+/>
+
+</Search>
+<ul>
+{filteredPosts.map(post => (
+    <li key={post.key}>{post.name}</li>
+))}
+</ul> */}

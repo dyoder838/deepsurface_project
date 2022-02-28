@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 
 import Db from '../src/vulnerability-data.json'
 
+
 function App() {
 
   return (
