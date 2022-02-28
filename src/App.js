@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
+
+// NPM packages
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+// Pages
 import MainPage from '../src/pages/Main';
 import DashBoard from '../src/pages/DashBoard';
+import Analysis from '../src/pages/Analysis';
+
+// Components
 import NavBar from './components/NavBar';
 
+// Data file to pass to components 
+import Db from '../src/vulnerability-data.json';
+
+// MUI requirements
 import Grid from '@mui/material/Grid';
 
-import Db from '../src/vulnerability-data.json'
+
 
 function App() {
 
@@ -20,8 +30,9 @@ function App() {
 
         <Routes>
 
-          <Route exact path="/" element={<MainPage stuff={Db}/>} />;
-          <Route exact path="/dashboard" element={<DashBoard stuff={Db} />} />;
+          <Route exact path="/" element={<MainPage db={Db}/>} />;
+          <Route exact path="/dashboard" element={<DashBoard db={Db} />} />;
+          <Route exact path="/analysis" element={<Analysis db={Db} />} />;
 
         </Routes>
 
