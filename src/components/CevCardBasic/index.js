@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography';
 
 
 export default function BasicCard(props) {
+
+  // convert julian dates from props.modified
   const dateConverter = (props.modified * 1000)
   const d = new Date(dateConverter);
 
@@ -43,14 +45,3 @@ export default function BasicCard(props) {
   );
 }
 
-// passing schema
-{/* <CevCardBasic
-
-id={props.db.id}
-hosts={props.db.hosts}
-patches={props.db.patches}
-risk={props.db.risk}
-identifier={props.db.identifier}
-modified={props.db.modified}
-description={props.db.description}
-urls={props.db.urls} /> */}

@@ -13,21 +13,20 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Microsoft', 'Linux', 'MacOS'];
+const pages = [{ name: "Microsoft" }, { name: 'Linux'}, { name: 'MacOS' }];
 
 
 const AnalysisBar = (props) => {
 
-    console.log(props)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-   
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
-        props.analysisBarData(microsoftArr)
+        // send data to Analysis page 
+        props.analysisBarData(reformattedArray)
         setAnchorElNav(null);
 
     };
@@ -36,39 +35,45 @@ const AnalysisBar = (props) => {
         isCaseSensitive: false,
         findAllMatches: true,
         useExtendedSearch: true,
-        keys :[
+        keys: [
             "id",
             "risk",
             "identifier",
             "modified",
             "description"
         ]
-      };
-// get an array of microsoft CVE 
+    };
+    // get an array of microsoft CVE 
 
-    // turn the database into Object values
-        const adjustedDb = Object.values(props.db.db)
-            // console.log("navbar adjustedDb:", adjustedDb)
-      
+    // turn the database into Object values so Fuse can read it
+    const adjustedDb = Object.values(props.db.db)
+
     // search for microsoft in the database
-        const microsoftSearch = new Fuse(adjustedDb, options);
-        const searchTerm = "microsoft";
-      
-        const microsoftArr = microsoftSearch.search(searchTerm);
-        console.log("navbar microsoftArr:",microsoftArr)
+    const microsoftSearch = new Fuse(adjustedDb, options);
+    const searchTerm = "microsoft";
+    
+    const microsoftArr = microsoftSearch.search(searchTerm);
 
-// arrange the array in date order 
+    // arrange the array in date order 
+
+    // sort array by item.modified julian date
     microsoftArr.sort(function compare(a, b) {
-    const aDateConverter = (a.item.modified * 1000)
-    const bDateConverter = (b.item.modified * 1000)
+        // multiply modified value by 1000 to convert to millaseconds for Date() to be accurate
+        const aDateConverter = (a.item.modified * 1000)
+        const bDateConverter = (b.item.modified * 1000)
         var c = new Date(aDateConverter);
         var d = new Date(bDateConverter);
-        return c-d;
-     });
+        return c - d;
+    });
 
-     console.log("analysisBar microsoftArr filtered:",microsoftArr)
-// populate the date value on the x axis, populate the risk value on the y axis
-        
+    // the component "Chart" cant read nested data, deconstruct objects in the array (get rid of "item")
+    console.log("AnalysisBar microsoftArr filtered:", microsoftArr)
+
+    const reformattedArray = microsoftArr.map(item => item.item);
+
+    console.log("AnalysisBar reformatted array:", reformattedArray)
+    // populate the date value on the x axis, populate the risk value on the y axis in Chart
+
 
     return (
 
@@ -82,9 +87,9 @@ const AnalysisBar = (props) => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex', lg: 'flex'} }}
+                        sx={{ mr: 2, display: { xs: 'none', md: 'flex', lg: 'flex' } }}
                     >
-                        CVE Analysis 
+                        CVE Analysis
                     </Typography>
 
                     {/* responsive menu */}
@@ -120,9 +125,9 @@ const AnalysisBar = (props) => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            {pages.map((index, data) => (
+                                <MenuItem key={data} value={index.name} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{index.name}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -137,17 +142,18 @@ const AnalysisBar = (props) => {
                     >
                         CVE Analysis
                     </Typography>
-                    
+
                     {/* menu buttons */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
-                        {pages.map((page) => (
+                        {pages.map((index, data) => (
                             <Button
-                                key={page}
+                                key={data}
+                                value={index.name}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                {index.name}
                             </Button>
                         ))}
 

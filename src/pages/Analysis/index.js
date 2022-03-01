@@ -1,11 +1,8 @@
-import {React, useState, setState} from 'react';
+import {React, useState} from 'react';
 
 // components
 import AnalysisBar from '../../components/AnalysisBar';
-import Chart from '../../components/Chart'
-
-
-// controller
+import Chart from '../../components/Chart';
 
 // MUI imports
 import Grid from '@mui/material/Grid';
@@ -13,16 +10,15 @@ import Paper from '@mui/material/Paper';
 
 export default function DashBoard(props) {
     
-    // recieve data from children
+    // recieve data from AnalysisBar
+    // send data to chart
     const [data, setData] = useState('');
 
     const analysisBarData = (analysisData) => {
         setData(analysisData);
        
     }
-    // pass childToParent to the child childToParent={childToParent}
-    console.log("child to parent data",data)
-
+    console.log("Analysis page state data:",data)
 
     return (
 
