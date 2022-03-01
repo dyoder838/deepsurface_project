@@ -13,6 +13,8 @@ export default function Chart(props) {
 
     console.log("chart props.chartData:", (props.chartData))
 
+    const theme = useTheme();
+   
   return (
     <React.Fragment>
       <Title>Microsoft</Title>
