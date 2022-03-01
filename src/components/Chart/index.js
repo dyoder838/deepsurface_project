@@ -1,16 +1,22 @@
-import * as React from 'react';
+import * as React  from 'react';
 import { useTheme } from '@mui/material/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from '../Title';
+import { InsertEmoticon } from '@mui/icons-material';
 
 
 
 
 export default function Chart(props) {
 
-    console.log("chart props:", props.chartData[0].item)
-  const theme = useTheme();
+    console.log("chart props:", (props.chartData))
+    const theme = useTheme();
+// add use effect to wait for the button push from component
+// add useState to keep the page from err
+    const bullShit = props.chartData
+    const reformattedArray = bullShit.map(({ key, value}) => ({ [key]: value }));
 
+        console.log(reformattedArray)
   return (
     <React.Fragment>
       <Title>Microsoft</Title>

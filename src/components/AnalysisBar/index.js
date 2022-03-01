@@ -34,25 +34,14 @@ const AnalysisBar = (props) => {
 
     const options = {
         isCaseSensitive: false,
-        // includeScore: false,
-        // shouldSort: true,
-        // includeMatches: false,
         findAllMatches: true,
-        // minMatchCharLength: 1,
-        // location: 0,
-        // threshold: 0.6,
-        // distance: 100,
         useExtendedSearch: true,
-        // ignoreLocation: false,
-        // ignoreFieldNorm: false,
-        // fieldNormWeight: 1,
         keys :[
             "id",
             "risk",
             "identifier",
             "modified",
             "description"
-        
         ]
       };
 // get an array of microsoft CVE 
@@ -67,7 +56,6 @@ const AnalysisBar = (props) => {
       
         const microsoftArr = microsoftSearch.search(searchTerm);
         console.log("navbar microsoftArr:",microsoftArr)
-        console.log(microsoftArr[0].item.modified)
 
 // arrange the array in date order 
     microsoftArr.sort(function compare(a, b) {
@@ -78,6 +66,7 @@ const AnalysisBar = (props) => {
         return c-d;
      });
 
+     console.log("analysisBar microsoftArr filtered:",microsoftArr)
 // populate the date value on the x axis, populate the risk value on the y axis
         
 
