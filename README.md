@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">Easy CVE</h3>
 
-## Available Scripts
+<div align="center">
 
-In the project directory, you can run:
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/dyoder838/deepsurface_project/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/dyoder838/deepsurface_project/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p align="center"> Manipulating JSON to visualize data
+    <br> 
+</p>
 
-### `npm test`
+## 📝 Table of Contents
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [Authors](#authors)
 
-### `npm run build`
+## 🧐 About <a name = "about"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project is an exercise in manipulating and viewing CVE data from a large Json file.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+planning phases:
+- [Phase 1](https://github.com/dyoder838/deepsurface_project/projects/1) - Creating basic page layout - concept
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Phase 2](https://github.com/dyoder838/deepsurface_project/projects/2) - Basic search functionality - WIP
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Just clone the repo and run "npm i" in your terminal
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+What things you need to install the software and how to install them.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+Node.js
+npm
+```
 
-### Code Splitting
+### Installing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Clone the repo
 
-### Analyzing the Bundle Size
+```
+git clone git@github.com:dyoder838/deepsurface_project.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+In your terminal run
 
-### Making a Progressive Web App
+```
+npm i
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## 🔧 Running the tests <a name = "tests"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+There are no automated tests at this time
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🎈 Usage <a name="usage"></a>
 
-### `npm run build` fails to minify
+The interface is minimal, the buttons are still hard coded in the current version. 
+A user can navagate Main, Dashboard, or Analysis pages via the nav bar. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The Analysis page is meant to show the user vulnerability trends by targeted system. currently the buttons only give results for Microsoft systems. 
+
+The graph shows all of the CVE reports in an ascending timeline with their associated "risk" levels (risk/time by OS, the timeline is currently in julian date format). This is to show a user the frequency and severity of vulnerabilitys they may be facing with their selected OS. 
+further implementation will show comparisons of each system and average risk for each based on the average risk of the vulnerability as compared to the occurance of vulnerabilities. 
+
+The Main page is intended to be a general search page and is not well developed - clicking on "see all curent CVEs" will redirect a user to the dashboard. 
+"Advanced" button is currently undeveloped 
+
+The Dashboard page loads all 500 of the CVEs from the json file and displays them. 
+
+
+## 🚀 Deployment <a name = "deployment"></a>
+
+There is no live deployment at this time 
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [Fuse.js](https://fusejs.io/) - Fuzzy Search Library 
+- [React](https://reactjs.org/) - Front End 
+- [MUI](https://mui.com/) - CSS Framework
+- [Recharts](https://recharts.org/en-US/) - Lharting Library
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@dyoder838](https://github.com/dyoder838) - Idea & Initial work
+
+
