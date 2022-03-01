@@ -1,31 +1,53 @@
-import React from 'react';
+import {React, useState, setState} from 'react';
 
 // components
-import CevCardBasic from '../../components/CevCardBasic';
+import AnalysisBar from '../../components/AnalysisBar';
+import Chart from '../../components/Chart'
+
+
+// controller
 
 // MUI imports
 import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 
 export default function DashBoard(props) {
-    console.log("Analysis page props:",props.db)
+    
+    // recieve data from children
+    const [data, setData] = useState('');
+
+    const analysisBarData = (analysisData) => {
+        setData(analysisData);
+       
+    }
+    // pass childToParent to the child childToParent={childToParent}
+    console.log("child to parent data",data)
 
 
     return (
 
         <Grid container>
 
-                <Grid item xs={12} md={6} lg={6}>
+                <Grid item xs={12}>
 
-                    <CevCardBasic
+                    <AnalysisBar analysisBarData={analysisBarData} db={props}/>
 
-                        id={props.db.id}
-                        hosts={props.db.hosts}
-                        patches={props.db.patches}
-                        risk={props.db.risk}
-                        identifier={props.db.identifier}
-                        modified={props.db.modified}
-                        description={props.db.description}
-                        urls={props.db.urls} />
+                </Grid>
+
+                <Grid container spacing={3}>
+                    {/* Chart */}
+                    <Grid item xs={12} md={8} lg={9}>
+                        <Paper
+                        sx={{
+                            p: 2,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            height: 240,
+                        }}
+                        >
+                        <Chart chartData={data}/>
+                        </Paper>
+                    </Grid>
 
                 </Grid>
 

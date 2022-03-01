@@ -42,3 +42,15 @@ export default function BasicCard(props) {
     </Card>
   );
 }
+
+// passing schema
+{/* <CevCardBasic
+
+id={props.db.id}
+hosts={props.db.hosts}
+patches={props.db.patches}
+risk={props.db.risk}
+identifier={props.db.identifier}
+modified={props.db.modified}
+description={props.db.description}
+urls={props.db.urls} /> */}

@@ -26,7 +26,7 @@ function App() {
 
       <Grid container>
 
-        <NavBar stuff={Db}/>
+        <NavBar db={Db}/>
 
         <Routes>
 

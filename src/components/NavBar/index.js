@@ -1,5 +1,7 @@
 import * as React from 'react';
-import {useState, setState} from 'react';
+import { useState, setState } from 'react';
+
+import Fuse from 'fuse.js';
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -58,14 +60,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar(props) {
 
-    // const [inputText, setInputText] = useState("");
-    // let inputHandler = (e) => {
-      
-    //   var lowerCase = e.target.value.toLowerCase();
-    //   setInputText(lowerCase);
-    // };
-
-    // console.log("navbar props:", props)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -121,23 +115,6 @@ export default function SearchAppBar(props) {
                     >
                         Easy CEV
                     </Typography>
-
-                    <Search>
-
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-
-                        <StyledInputBase
-                            // onChange={inputHandler}
-                            type="text"
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            name="search"
-                            id="search"
-                        />
-
-                    </Search>
 
                 </Toolbar>
 
