@@ -8,7 +8,7 @@ export default function DashBoard(props) {
 
         <Grid container>
 
-            {Object.entries(props.stuff).map(([index, data]) =>
+            {Object.entries(props.db).map(([index, data]) =>
 
                 <Grid key={index} item xs={12} md={6} lg={6}>
 

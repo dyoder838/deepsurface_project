@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 
 import Card from '@mui/material/Card';
@@ -8,15 +8,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function MainPage() {
-
-    // create an API call with useEffect to collect and pass data 
-
-    useEffect(() => {
-
-
-
-
-    });
 
     return (
         <Grid container>

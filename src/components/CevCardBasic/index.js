@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography';
 
 
 export default function BasicCard(props) {
+
+  // convert julian dates from props.modified
   const dateConverter = (props.modified * 1000)
   const d = new Date(dateConverter);
 
@@ -42,3 +44,4 @@ export default function BasicCard(props) {
     </Card>
   );
 }
+
